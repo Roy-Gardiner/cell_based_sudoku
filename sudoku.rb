@@ -18,9 +18,9 @@ class Sudoku
   end
 
   def play
-  	new_values_found = true
-  	while new_values_found
-  		new_values_found = false
+  	no_new_values_found = true
+  	(0..100).each do 
+  		no_new_values_found = true
   	  @cells.each_with_index do |this_cell,i|
   	  	cell_possible_values = ["1","2","3","4","5","6","7","8","9"]
   	  	unless cell_possible_values.include?(this_cell.value)	
@@ -31,9 +31,10 @@ class Sudoku
   	  	end	
   	  	if cell_possible_values.length == 1
   	  		this_cell.value= cell_possible_values[0]
-  	  		new_values_found = true
+  	  		no_new_values_found = false
   	  	end
   	  end
+  	  break if no_new_values_found
   	end
 
   	solution = ""
