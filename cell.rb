@@ -3,7 +3,10 @@ class Cell
   def initialize(options={})
     @number = options.fetch(:number,number)
     @value = options.fetch(:value,value)
+    @possible_values = []
     @neighbours = []
+    @guessed = false
+    @guessed_values = []
   end
 
   def number
@@ -15,6 +18,15 @@ class Cell
   end
   def value= sudoku_number
     @value = sudoku_number
+  end
+  def possible_values= values 
+    @possible_values = values
+  end 
+  def possible_values
+    @possible_values 
+  end 
+  def guessed= value 
+    @guessed = value
   end
 
   
